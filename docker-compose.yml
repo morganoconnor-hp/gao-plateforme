@@ -6,20 +6,20 @@ services:
 
     postgres:
       image: postgres:11.1-alpine
-      container_name: gao-postgres
+      container_name: cda-postgres
       working_dir: /application
       volumes:
         - .:/application
       environment:
-        - POSTGRES_USER=gao
-        - POSTGRES_PASSWORD=gao
-        - POSTGRES_DB=gao
+        - POSTGRES_USER=cda
+        - POSTGRES_PASSWORD=cda
+        - POSTGRES_DB=cda
       ports:
         - "1034:5432"
 
     webserver:
       image: nginx:alpine
-      container_name: gao-webserver
+      container_name: cda-webserver
       working_dir: /application
       volumes:
           - .:/application
@@ -29,7 +29,7 @@ services:
 
     php-fpm:
       build: phpdocker/php-fpm
-      container_name: gao-php-fpm
+      container_name: cda-php-fpm
       working_dir: /application
       volumes:
         - .:/application
